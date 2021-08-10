@@ -1,12 +1,12 @@
 {
-    "name": "actuallymab/laravel-comment",
+    "name": "mll-lab/laravel-comment",
     "type": "library",
     "description": "Just another comment system for your awesome Laravel project.",
     "keywords": [
         "actuallymab",
         "laravel-comment"
     ],
-    "homepage": "https://github.com/actuallymab/laravel-comment",
+    "homepage": "https://github.com/mll-lab/laravel-comment",
     "license": "MIT",
     "authors": [
         {
