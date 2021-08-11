@@ -9,48 +9,48 @@ Just another comment system for your awesome Laravel project.
 
 Via Composer
 
-``` bash
+```bash
 $ composer require actuallymab/laravel-comment
 ```
 
 Publish configurations and migrations, then migrate comments table.
 
-``` bash
+```bash
 $ php artisan vendor:publish
 $ php artisan migrate
 ```
 
 Add `CanComment` trait to your User model.
 
-``` php
+```php
 use Actuallymab\LaravelComment\CanComment;
 
 class User extends Model
 {
     use CanComment;
-    
-    // ...   
+
+    // ...
 }
 
 ```
 
 Add `Commentable` interface and `HasComments` trait to your commentable model(s).
 
-``` php
+```php
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
 
 class Product extends Model implements Commentable
 {
     use HasComments;
-    
-    // ...   
+
+    // ...
 }
 ```
 
 If you want to have your own Comment Model create a new one and extend my Comment model.
 
-``` php
+```php
 use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
 
 class Comment extends LaravelComment
@@ -63,8 +63,8 @@ and don't forget to update the model name in the `config/comment.php` file.
 
 ### Allow rating
 
-``` php
-class Product extends Model implements Commentable 
+```php
+class Product extends Model implements Commentable
 {
     use HasComments;
 
@@ -79,8 +79,8 @@ class Product extends Model implements Commentable
 
 ### Require comments to be approved
 
-``` php
-class Product extends Model implements Commentable 
+```php
+class Product extends Model implements Commentable
 {
     use HasComments;
 
@@ -95,11 +95,11 @@ class Product extends Model implements Commentable
 
 ### Allow some users to comment without approval
 
-``` php
-class User extends Model 
+```php
+class User extends Model
 {
     use CanComment;
-  
+
     protected $fillable = [
         'isAdmin',
         // ..
@@ -116,7 +116,7 @@ class User extends Model
 
 ## Usage
 
-``` php
+```php
 $user = App\User::first();
 $product = App\Product::first();
 
@@ -133,7 +133,7 @@ $product->averageRate();
 $product->totalCommentsCount();
 ```
 
-> Tip: You might want to look at the tests/CommentTest.php file to check all potential usages. 
+> Tip: You might want to look at the tests/CommentTest.php file to check all potential usages.
 
 ## Changelog
 
