@@ -29,6 +29,10 @@ jobs:
           - ^8
         exclude:
           - php-version: 7.1
+            laravel-version: ^6
+          - php-version: 7.1
+            laravel-version: ^7
+          - php-version: 7.1
             laravel-version: ^8
           - php-version: 7.2
             laravel-version: ^8
@@ -58,7 +62,7 @@ jobs:
           key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
 
-      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+      - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
       - run: vendor/bin/phpunit --colors=always --verbose
 
@@ -88,7 +92,7 @@ jobs:
           key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
 
-      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+      - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
