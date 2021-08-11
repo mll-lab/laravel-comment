@@ -25,8 +25,8 @@ jobs:
 
       - uses: creyD/prettier_action@v2.2
         with:
-          prettier_options: --write --tab-width=2 docs/**/**/*.md docs/**/*.js
+          prettier_options: --write --tab-width=2 *.md
           branch: ${{ github.head_ref }}
-          commit_message: Prettify docs
+          commit_message: Prettify
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
