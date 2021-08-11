@@ -11,20 +11,16 @@ Just another comment system for your awesome Laravel project.
 
 ## Install
 
-Via Composer
+Via Composer:
 
-```bash
-$ composer require actuallymab/laravel-comment
-```
+    composer require mll-lab/laravel-comment
 
-Publish configurations and migrations, then migrate comments table.
+Publish configurations and migrations, then migrate the `comments` table:
 
-```bash
-$ php artisan vendor:publish
-$ php artisan migrate
-```
+    php artisan vendor:publish
+    php artisan migrate
 
-Add `CanComment` trait to your User model.
+Add the `CanComment` trait to your User model:
 
 ```php
 use Actuallymab\LaravelComment\CanComment;
@@ -32,13 +28,9 @@ use Actuallymab\LaravelComment\CanComment;
 class User extends Model
 {
     use CanComment;
-
-    // ...
-}
-
 ```
 
-Add `Commentable` interface and `HasComments` trait to your commentable model(s).
+Add the `Commentable` interface and the `HasComments` trait to your commentable model(s):
 
 ```php
 use Actuallymab\LaravelComment\Contracts\Commentable;
@@ -47,23 +39,17 @@ use Actuallymab\LaravelComment\HasComments;
 class Product extends Model implements Commentable
 {
     use HasComments;
-
-    // ...
-}
 ```
 
-If you want to have your own Comment Model create a new one and extend my Comment model.
+If you want to have your own `Comment` Model create a new one and extend `Actuallymab\LaravelComment\Models\Comment`:
 
 ```php
 use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
 
 class Comment extends LaravelComment
-{
-    // ...
-}
 ```
 
-and don't forget to update the model name in the `config/comment.php` file.
+> Don't forget to update the model class in `config/comment.php`.
 
 ### Allow rating
 
@@ -76,9 +62,6 @@ class Product extends Model implements Commentable
     {
         return true; // default false
     }
-
-    //...
-}
 ```
 
 ### Require comments to be approved
@@ -92,9 +75,6 @@ class Product extends Model implements Commentable
     {
         return true; // default false
     }
-
-    // ...
-}
 ```
 
 ### Allow some users to comment without approval
@@ -106,34 +86,32 @@ class User extends Model
 
     protected $fillable = [
         'isAdmin',
-        // ..
     ];
 
     public function canCommentWithoutApprove(): bool
     {
         return $this->isAdmin;
     }
-
-    // ..
-}
 ```
 
 ## Usage
 
 ```php
-$user = App\User::first();
-$product = App\Product::first();
+$user = User::firstOrFail();
+$product = Product::firstOrFail();
 
-// $user->comment(Commentable $model, $comment = '', $rate = 0);
+// Pass the model to comment, the content and an optional rate
 $user->comment($product, 'Lorem ipsum ..', 3);
 
-// approve it -- if the user model `canCommentWithoutApprove()` or you don't use `mustBeApproved()`, it is not necessary
+// Only necessary if:
+// - User::canCommentWithoutApprove() returns false
+// - Product::mustBeApproved() returns true
 $product->comments[0]->approve();
 
-// get avg rating -- it calculates approved average rate.
+// Calculates the average rating of approved comments
 $product->averageRate();
 
-// get total comments count -- it calculates approved comments count.
+// Calculates the amount of approved comments
 $product->totalCommentsCount();
 ```
 
