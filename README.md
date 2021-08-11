@@ -132,4 +132,4 @@ If you discover any security related issues, email dev@mll.com instead of using 
 ## Credits
 
 - [Mehmet Aydın Bahadır](https://github.com/actuallymab)
-- [All Contributors](contributors)
+- [All Contributors](../../contributors)
