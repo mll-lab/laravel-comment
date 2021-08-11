@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment;
 
@@ -15,7 +17,7 @@ trait CanComment
         $comment = new $commentModel([
             'comment'        => $commentText,
             'rate'           => $commentable->canBeRated() ? $rate : null,
-            'approved'       => $commentable->mustBeApproved() && !$this->canCommentWithoutApprove() ? false : true,
+            'approved'       => $commentable->mustBeApproved() && ! $this->canCommentWithoutApprove() ? false : true,
             'commented_id'   => $this->primaryId(),
             'commented_type' => get_class(),
         ]);
@@ -47,6 +49,6 @@ trait CanComment
 
     private function primaryId(): string
     {
-        return (string)$this->getAttribute($this->primaryKey);
+        return (string) $this->getAttribute($this->primaryKey);
     }
 }

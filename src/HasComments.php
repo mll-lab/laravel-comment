@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment;
 
@@ -33,23 +35,23 @@ trait HasComments
 
     public function averageRate(int $round = 2): float
     {
-        if (!$this->canBeRated()) {
+        if (! $this->canBeRated()) {
             return 0;
         }
 
         /** @var Builder $rates */
         $rates = $this->comments()->approvedComments();
 
-        if (!$rates->exists()) {
+        if (! $rates->exists()) {
             return 0;
         }
 
-        return round((float)$rates->avg('rate'), $round);
+        return round((float) $rates->avg('rate'), $round);
     }
 
     public function totalCommentsCount(): int
     {
-        if (!$this->mustBeApproved()) {
+        if (! $this->mustBeApproved()) {
             return $this->comments()->count();
         }
 

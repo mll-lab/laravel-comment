@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests;
 
@@ -18,11 +20,11 @@ abstract class TestCase extends Orchestra
     {
         $this->loadMigrationsFrom([
             '--database' => 'testing',
-            '--path' => __DIR__ . '/migrations',
+            '--path' => __DIR__.'/migrations',
             '--realpath' => true,
         ]);
 
-        require_once __DIR__ . '/../src/create_comments_table.php.stub';
+        require_once __DIR__.'/../src/create_comments_table.php.stub';
 
         (new \CreateCommentsTable)->up();
     }

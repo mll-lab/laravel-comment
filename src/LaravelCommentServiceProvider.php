@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment;
 
@@ -8,7 +10,7 @@ class LaravelCommentServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $configFile = __DIR__ . '/comment.php';
+        $configFile = __DIR__.'/comment.php';
 
         $this->publishes([
             $configFile => config_path('comment.php'),
@@ -19,8 +21,7 @@ class LaravelCommentServiceProvider extends ServiceProvider
             $timestamp = date('Y_m_d_His', time());
 
             $this->publishes([
-                __DIR__ . '/create_comments_table.php.stub' =>
-                    database_path("migrations/{$timestamp}_create_comments_table.php")
+                __DIR__.'/create_comments_table.php.stub' => database_path("migrations/{$timestamp}_create_comments_table.php"),
             ], 'migrations');
         }
     }

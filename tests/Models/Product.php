@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests\Models;
 
@@ -8,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string $name
- * @property boolean $can_be_rated
- * @property boolean $must_be_approved
+ * @property bool $can_be_rated
+ * @property bool $must_be_approved
  */
 class Product extends Model implements Commentable
 {
