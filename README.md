@@ -4,8 +4,8 @@
 [![Code Coverage](https://codecov.io/gh/mll-lab/laravel-comment/branch/master/graph/badge.svg)](https://codecov.io/gh/mll-lab/laravel-comment)
 [![StyleCI](https://github.styleci.io/repos/376801814/shield?branch=master&style=flat)](https://github.styleci.io/repos/376801814)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mll-lab/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/mll-lab/laravel-comment)
-[![Total Downloads](https://img.shields.io/packagist/dt/mll-lab/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/mll-lab/laravel-comment)
+[![Packagist](https://img.shields.io/packagist/dt/mll-lab/laravel-comment.svg)](https://packagist.org/packages/mll-lab/laravel-comment)
+[![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-comment/v/stable)](https://packagist.org/packages/mll-lab/laravel-comment)
 
 Just another comment system for your awesome Laravel project.
 
