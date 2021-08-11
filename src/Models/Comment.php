@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Models;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 /**
  * @property string $comment
  * @property float $rate
- * @property boolean $approved
+ * @property bool $approved
  * @property string $commentable_id
  * @property string $commentable_type
  * @property Model $commentable
@@ -30,7 +31,7 @@ class Comment extends Model implements Commentable
     protected $guarded = [];
 
     protected $casts = [
-        'approved' => 'boolean'
+        'approved' => 'boolean',
     ];
 
     public function commentable(): MorphTo

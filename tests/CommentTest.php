@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests;
@@ -209,7 +210,7 @@ class CommentTest extends TestCase
         return Product::create([
             'name'             => $this->faker->word,
             'can_be_rated'     => $canBeRated,
-            'must_be_approved' => $mustBeApproved
+            'must_be_approved' => $mustBeApproved,
         ]);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment;
@@ -8,7 +9,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 /**
- * @property Collection $comments
+ * @property Collection<\Actuallymab\LaravelComment\Models\Comment> $comments
  */
 trait HasComments
 {
@@ -29,28 +30,28 @@ trait HasComments
 
     public function primaryId(): string
     {
-        return (string)$this->getAttribute($this->primaryKey);
+        return (string) $this->getAttribute($this->primaryKey);
     }
 
     public function averageRate(int $round = 2): float
     {
-        if (!$this->canBeRated()) {
+        if (! $this->canBeRated()) {
             return 0;
         }
 
         /** @var Builder $rates */
         $rates = $this->comments()->approvedComments();
 
-        if (!$rates->exists()) {
+        if (! $rates->exists()) {
             return 0;
         }
 
-        return round((float)$rates->avg('rate'), $round);
+        return round((float) $rates->avg('rate'), $round);
     }
 
     public function totalCommentsCount(): int
     {
-        if (!$this->mustBeApproved()) {
+        if (! $this->mustBeApproved()) {
             return $this->comments()->count();
         }
 
