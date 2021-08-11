@@ -1,23 +1,23 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Users extends Migration
+class Products extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('can_be_rated')->default(false);
+            $table->boolean('must_be_approved')->default(false);
         });
     }
 
     public function down(): void
     {
-        Schema::drop('users');
+        Schema::drop('products');
     }
 }

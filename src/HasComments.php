@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment;
 
@@ -8,7 +7,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 /**
- * @property Collection $comments
+ * @property Collection<\Actuallymab\LaravelComment\Models\Comment> $comments
  */
 trait HasComments
 {
@@ -29,7 +28,7 @@ trait HasComments
 
     public function primaryId(): string
     {
-        return (string)$this->getAttribute($this->primaryKey);
+        return (string) $this->getAttribute($this->primaryKey);
     }
 
     public function averageRate(int $round = 2): float

@@ -1,25 +1,9 @@
 # Laravel Comment
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/actuallymab/laravel-comment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/actuallymab/laravel-comment/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/actuallymab/laravel-comment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/actuallymab/laravel-comment/?branch=master)
+[![Latest Version on Packagist][https://img.shields.io/packagist/v/mll-lab/laravel-comment.svg?style=flat-square]][https://packagist.org/packages/mll-lab/laravel-comment]
+[![Total Downloads][https://img.shields.io/packagist/dt/mll-lab/laravel-comment.svg?style=flat-square]][https://packagist.org/packages/mll-lab/laravel-comment]
 
 Just another comment system for your awesome Laravel project.
-
-## Version Compatibility
-
- Laravel  | Laravel Comment
-:---------|:----------
- 5.0.x    | 0.1.x
- 5.1.x    | 0.1.x
- 5.2.x    | 0.1.x
- 5.3.x    | 0.2.x
- 5.4.x    | 0.3.x
- 
-For `>5.5` you can use `^1.0.0` version.
 
 ## Install
 
@@ -27,12 +11,6 @@ Via Composer
 
 ``` bash
 $ composer require actuallymab/laravel-comment
-```
-
-If you don't use auto-discovery, or using Laravel version < 5.5 Add service provider to your app.php file
-
-``` php
-\Actuallymab\LaravelComment\LaravelCommentServiceProvider::class
 ```
 
 Publish configurations and migrations, then migrate comments table.
@@ -81,11 +59,9 @@ class Comment extends LaravelComment
 }
 ```
 
-and dont forget to update the model name in the `config/comment.php` file.
+and don't forget to update the model name in the `config/comment.php` file.
 
-Comment package comes with several modes.
-
-1- If you want to users can rate your commentable models;
+### Allow rating
 
 ``` php
 class Product extends Model implements Commentable 
@@ -101,7 +77,7 @@ class Product extends Model implements Commentable
 }
 ```
 
-2- If you want to approve comments for your commentable models;
+### Require comments to be approved
 
 ``` php
 class Product extends Model implements Commentable 
@@ -117,7 +93,7 @@ class Product extends Model implements Commentable
 }
 ```
 
-3- Sometimes you don't want to approve comments for all users;
+### Allow some users to comment without approval
 
 ``` php
 class User extends Model 
@@ -159,40 +135,19 @@ $product->totalCommentsCount();
 
 > Tip: You might want to look at the tests/CommentTest.php file to check all potential usages. 
 
-## Change log
+## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
-```
+All notable changes to this project are documented in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+See [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md).
 
 ## Security
 
-If you discover any security related issues, please email mehmet.aydin.bahadir@gmail.com instead of using the issue tracker.
+If you discover any security related issues, email dev@mll.com instead of using the issue tracker.
 
 ## Credits
 
-- [Mehmet Aydın Bahadır][link-author]
-- [All Contributors][link-contributors]
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/actuallymab/laravel-comment.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/actuallymab/laravel-comment/master.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/actuallymab/laravel-comment.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/actuallymab/laravel-comment
-[link-travis]: https://travis-ci.org/actuallymab/laravel-comment
-[link-downloads]: https://packagist.org/packages/actuallymab/laravel-comment
-[link-author]: https://github.com/actuallymab
-[link-contributors]: ../../contributors
+- [Mehmet Aydın Bahadır][https://github.com/actuallymab]
+- [All Contributors][../../contributors]

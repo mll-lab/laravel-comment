@@ -3,7 +3,6 @@
     "type": "library",
     "description": "Just another comment system for your awesome Laravel project.",
     "keywords": [
-        "actuallymab",
         "laravel-comment"
     ],
     "homepage": "https://github.com/mll-lab/laravel-comment",
@@ -12,6 +11,10 @@
         {
             "name": "Mehmet Aydin Bahadir",
             "email": "mehmet.aydin.bahadir@gmail.com"
+        },
+        {
+            "name": "Benedikt Franke",
+            "email": "benedikt@franke.tech"
         }
     ],
     "require": {
@@ -21,7 +24,7 @@
     "require-dev": {
         "phpunit/phpunit": "^7.4",
         "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0|^6.0",
-        "fzaninotto/faker": "^1.8",
+        "fakerphp/faker": "^1.8",
         "scrutinizer/ocular": "^1.5"
     },
     "autoload": {
@@ -33,11 +36,6 @@
         "psr-4": {
             "Actuallymab\\LaravelComment\\Tests\\": "tests"
         }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
     },
     "extra": {
         "branch-alias": {
