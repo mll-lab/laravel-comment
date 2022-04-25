@@ -1,12 +1,11 @@
 {
     "name": "mll-lab/laravel-comment",
-    "type": "library",
     "description": "Just another comment system for your awesome Laravel project.",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "laravel-comment"
     ],
-    "homepage": "https://github.com/mll-lab/laravel-comment",
-    "license": "MIT",
     "authors": [
         {
             "name": "Mehmet Aydin Bahadir",
@@ -17,26 +16,18 @@
             "email": "benedikt@franke.tech"
         }
     ],
+    "homepage": "https://github.com/mll-lab/laravel-comment",
     "require": {
         "php": "^7.1 || ^8.0",
         "illuminate/contracts": "5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6 || ^7 || ^8 || ^9",
         "illuminate/support": "5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6 || ^7 || ^8 || ^9"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.25",
         "fakerphp/faker": "^1.8",
         "orchestra/testbench": "3.5.* || 3.6.* || 3.7.* || 3.8.* || 3.9.* || ^4 || ^5 || ^6 || ^7",
         "phpunit/phpunit": "^7.5 || ^8.4 || ^9 || ^9.5",
         "scrutinizer/ocular": "^1.5"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
-        "laravel": {
-            "providers": [
-                "\\Actuallymab\\LaravelComment\\LaravelCommentServiceProvider"
-            ]
-        }
     },
     "autoload": {
         "psr-4": {
@@ -46,6 +37,21 @@
     "autoload-dev": {
         "psr-4": {
             "Actuallymab\\LaravelComment\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "\\Actuallymab\\LaravelComment\\LaravelCommentServiceProvider"
+            ]
         }
     }
 }
