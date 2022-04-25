@@ -85,8 +85,7 @@ jobs:
           extensions: ${{ env.REQUIRED_PHP_EXTENSIONS }}
           php-version: ${{ matrix.php-version }}
 
-      - name: "Cache composer dependencies"
-        uses: actions/cache@v1
+      - uses: actions/cache@v1
         with:
           path: ~/.composer/cache
           key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
@@ -96,6 +95,6 @@ jobs:
 
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - run: bash <(curl -s https://codecov.io/bash)
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
