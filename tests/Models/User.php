@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests\Models;
 
@@ -11,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property bool $is_admin
  */
-class User extends Model
+final class User extends Model
 {
     use CanComment;
 

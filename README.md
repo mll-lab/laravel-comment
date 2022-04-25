@@ -24,7 +24,7 @@ Add the `CanComment` trait to your User model:
 ```php
 use Actuallymab\LaravelComment\CanComment;
 
-class User extends Model
+final class User extends Model
 {
     use CanComment;
 ```
@@ -35,7 +35,7 @@ Add the `Commentable` interface and the `HasComments` trait to your commentable 
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
 
-class Product extends Model implements Commentable
+final class Product extends Model implements Commentable
 {
     use HasComments;
 ```
@@ -45,7 +45,7 @@ If you want to have your own `Comment` Model create a new one and extend `Actual
 ```php
 use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
 
-class Comment extends LaravelComment
+final class Comment extends LaravelComment
 ```
 
 > Don't forget to update the model class in `config/comment.php`.
@@ -53,7 +53,7 @@ class Comment extends LaravelComment
 ### Allow rating
 
 ```php
-class Product extends Model implements Commentable
+final class Product extends Model implements Commentable
 {
     use HasComments;
 
@@ -66,7 +66,7 @@ class Product extends Model implements Commentable
 ### Require comments to be approved
 
 ```php
-class Product extends Model implements Commentable
+final class Product extends Model implements Commentable
 {
     use HasComments;
 
@@ -79,7 +79,7 @@ class Product extends Model implements Commentable
 ### Allow some users to comment without approval
 
 ```php
-class User extends Model
+final class User extends Model
 {
     use CanComment;
 

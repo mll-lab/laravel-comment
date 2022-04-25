@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests\Models;
 
@@ -13,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $can_be_rated
  * @property bool $must_be_approved
  */
-class Product extends Model implements Commentable
+final class Product extends Model implements Commentable
 {
     use HasComments;
 

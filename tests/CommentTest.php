@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Actuallymab\LaravelComment\Tests;
 
@@ -9,12 +7,11 @@ use Actuallymab\LaravelComment\Tests\Models\Product;
 use Actuallymab\LaravelComment\Tests\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 
-class CommentTest extends TestCase
+final class CommentTest extends TestCase
 {
     use WithFaker;
 
-    /** @test */
-    public function it_belongs_to_a_can_comment_object()
+    public function test_belongs_to_a_can_comment_object()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
@@ -29,8 +26,7 @@ class CommentTest extends TestCase
         $this->assertTrue($product->comments()->first()->commented->is($user));
     }
 
-    /** @test */
-    public function comment_object_is_returned_after_comment_operation()
+    public function test_comment_object_is_returned_after_comment_operation()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
@@ -38,8 +34,7 @@ class CommentTest extends TestCase
         $this->assertInstanceOf(Comment::class, $user->comment($product, $this->faker->sentence));
     }
 
-    /** @test */
-    public function comment_can_be_checked()
+    public function test_comment_can_be_checked()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
@@ -49,8 +44,7 @@ class CommentTest extends TestCase
         $this->assertTrue($user->hasCommentsOn($product));
     }
 
-    /** @test */
-    public function it_must_be_unapproved_as_default_if_must_be_approved_method_returns_true()
+    public function test_must_be_unapproved_as_default_if_must_be_approved_method_returns_true()
     {
         $user = $this->createUser();
         $product = $this->createProductWithCommentsMustBeApproved();
@@ -59,8 +53,7 @@ class CommentTest extends TestCase
         $this->assertFalse($user->comments[0]->approved);
     }
 
-    /** @test */
-    public function it_must_be_approved_as_default_if_a_product_was_commented_by_an_admin()
+    public function test_must_be_approved_as_default_if_a_product_was_commented_by_an_admin()
     {
         $admin = $this->createAdmin();
         $product = $this->createProductWithCommentsMustBeApproved();
@@ -69,8 +62,7 @@ class CommentTest extends TestCase
         $this->assertTrue($admin->comments[0]->approved);
     }
 
-    /** @test */
-    public function it_can_be_approved()
+    public function test_can_be_approved()
     {
         $user = $this->createUser();
         $product = $this->createProductWithCommentsMustBeApproved();
@@ -81,8 +73,7 @@ class CommentTest extends TestCase
         $this->assertTrue($product->comments[0]->fresh()->approved);
     }
 
-    /** @test */
-    public function it_can_be_rated()
+    public function test_can_be_rated()
     {
         $user = $this->createUser();
         $product = $this->createRateableProduct();
@@ -91,8 +82,7 @@ class CommentTest extends TestCase
         $this->assertEquals(3, $user->comments[0]->rate);
     }
 
-    /** @test */
-    public function rate_does_not_make_sense_when_its_not_rateable_product()
+    public function test_rate_does_not_make_sense_when_its_not_rateable_product()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
@@ -101,8 +91,7 @@ class CommentTest extends TestCase
         $this->assertEquals(0, $product->averageRate());
     }
 
-    /** @test */
-    public function it_can_calculate_average_rating_of_all_comments()
+    public function test_can_calculate_average_rating_of_all_comments()
     {
         $user = $this->createUser();
         $product = $this->createRateableProduct();
@@ -119,8 +108,7 @@ class CommentTest extends TestCase
         $this->assertEquals(3.67, $product->averageRate());
     }
 
-    /** @test */
-    public function it_must_calculate_average_rating_only_from_approved_comments_if_approve_option_enabled()
+    public function test_must_calculate_average_rating_only_from_approved_comments_if_approve_option_enabled()
     {
         $admin = $this->createUser();
         $product = $this->createRateableProductWithCommentsMustBeApproved();
@@ -144,8 +132,7 @@ class CommentTest extends TestCase
         $this->assertEquals(3, $product->averageRate());
     }
 
-    /** @test */
-    public function it_can_calculate_total_comments_count()
+    public function test_can_calculate_total_comments_count()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
@@ -156,8 +143,7 @@ class CommentTest extends TestCase
         $this->assertEquals(2, $product->totalCommentsCount());
     }
 
-    /** @test */
-    public function it_must_calculate_only_approved_comments_as_total_comment_if_approve_option_enabled()
+    public function test_must_calculate_only_approved_comments_as_total_comment_if_approve_option_enabled()
     {
         $user = $this->createUser();
         $product = $this->createProductWithCommentsMustBeApproved();
@@ -178,8 +164,7 @@ class CommentTest extends TestCase
         $this->assertEquals(3, $product->totalCommentsCount());
     }
 
-    /** @test */
-    public function comments_also_can_be_commentable()
+    public function test_comments_also_can_be_commentable()
     {
         $user = $this->createUser();
         $product = $this->createProduct();
