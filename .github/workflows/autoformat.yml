@@ -10,7 +10,11 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - uses: docker://ergebnis/composer-normalize-action:0.8.0
+      - uses: shivammathur/setup-php@v2
+
+      - uses: ramsey/composer-install@v2
+
+      - run: composer normalize
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
