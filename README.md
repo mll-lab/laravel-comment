@@ -2,7 +2,6 @@
 
 [![Validate](https://github.com/mll-lab/laravel-comment/workflows/Validate/badge.svg)](https://github.com/mll-lab/laravel-comment/actions)
 [![Code Coverage](https://codecov.io/gh/mll-lab/laravel-comment/branch/master/graph/badge.svg)](https://codecov.io/gh/mll-lab/laravel-comment)
-[![StyleCI](https://github.styleci.io/repos/376801814/shield?branch=master&style=flat)](https://github.styleci.io/repos/376801814)
 
 [![Packagist](https://img.shields.io/packagist/dt/mll-lab/laravel-comment.svg)](https://packagist.org/packages/mll-lab/laravel-comment)
 [![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-comment/v/stable)](https://packagist.org/packages/mll-lab/laravel-comment)
