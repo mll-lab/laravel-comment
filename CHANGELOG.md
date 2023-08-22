@@ -11,7 +11,7 @@ See [GitHub releases](https://github.com/mll-lab/laravel-comment/releases).
 
 ### Added
 
-- Support Laravel 9
+- Support Laravel 10
 
 ## 1.2.0
 
