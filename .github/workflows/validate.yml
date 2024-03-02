@@ -1,4 +1,5 @@
-name: "Validate"
+name: Validate
+
 on:
   pull_request:
   push:
@@ -12,26 +13,12 @@ jobs:
   tests:
     runs-on: ubuntu-20.04
 
+
     strategy:
       fail-fast: false
       matrix:
-        php-version:
-          - 7.1
-          - 7.2
-          - 7.3
-          - 7.4
-          - 8.0
-          - 8.1
-          - 8.2
-        laravel-version:
-          - 5.6.*
-          - 5.7.*
-          - 5.8.*
-          - ^6
-          - ^7
-          - ^8
-          - ^9
-          - ^10
+        php-version: [7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2]
+        laravel-version: ['5.6.*', '5.7.*', '5.8.*', '11.*', ^6, ^7, ^8, ^9, ^10]
         exclude:
           - php-version: 7.1
             laravel-version: ^6
@@ -89,14 +76,29 @@ jobs:
             laravel-version: ^6
           - php-version: 8.2
             laravel-version: ^7
+          - laravel-version: 11.*
+            php-version: 7.1
+          - laravel-version: 11.*
+            php-version: 7.2
+          - laravel-version: 11.*
+            php-version: 7.3
+          - laravel-version: 11.*
+            php-version: 7.4
+          - laravel-version: 11.*
+            php-version: 8.0
+          - laravel-version: 11.*
+            php-version: 8.1
+
 
     steps:
       - uses: actions/checkout@v2
+
 
       - uses: shivammathur/setup-php@v2
         with:
           extensions: ${{ env.REQUIRED_PHP_EXTENSIONS }}
           php-version: ${{ matrix.php-version }}
+
 
       - uses: actions/cache@v1
         with:
@@ -104,22 +106,28 @@ jobs:
           key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
 
+
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+
 
       - run: vendor/bin/phpunit --colors=always
 
   coverage:
     runs-on: ubuntu-20.04
 
+
     strategy:
       matrix:
-        php-version:
-          - 8.1
-        laravel-version:
-          - ^9
+        php-version: [8.1, '8.2']
+        laravel-version: ['11.0', ^9]
+        exclude:
+          - laravel-version: '11.0'
+            php-version: 8.1
+
 
     steps:
       - uses: actions/checkout@v2
+
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -127,15 +135,19 @@ jobs:
           extensions: ${{ env.REQUIRED_PHP_EXTENSIONS }}
           php-version: ${{ matrix.php-version }}
 
+
       - uses: actions/cache@v1
         with:
           path: ~/.composer/cache
           key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
           restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
 
+
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
+
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
 
       - uses: codecov/codecov-action@v2
         with:
