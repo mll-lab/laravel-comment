@@ -122,7 +122,7 @@ jobs:
 
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpunit --coverage-filter=src
 
   coverage:
     runs-on: ubuntu-20.04
@@ -138,7 +138,7 @@ jobs:
 
       - uses: ramsey/composer-install@v3
 
-      - run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - run: vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-filter=src
 
       - uses: codecov/codecov-action@v4
         with:
