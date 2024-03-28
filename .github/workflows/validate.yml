@@ -133,9 +133,9 @@ jobs:
 
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - if: matrix.laravel-version == ^11
+      - if: matrix.laravel-version == '^11'
         run: vendor/bin/phpunit --coverage-filter=src
-      - if: matrix.laravel-version != ^11
+      - if: matrix.laravel-version != '^11'
         run: vendor/bin/phpunit
 
   coverage:
