@@ -23,6 +23,7 @@ jobs:
           - 8.0
           - 8.1
           - 8.2
+          - 8.3
         laravel-version:
           - 5.6.*
           - 5.7.*
@@ -32,6 +33,7 @@ jobs:
           - ^8
           - ^9
           - ^10
+          - ^11
         exclude:
           - php-version: 7.1
             laravel-version: ^6
@@ -43,20 +45,28 @@ jobs:
             laravel-version: ^9
           - php-version: 7.1
             laravel-version: ^10
+          - php-version: 7.1
+            laravel-version: ^11
           - php-version: 7.2
             laravel-version: ^8
           - php-version: 7.2
             laravel-version: ^9
           - php-version: 7.2
             laravel-version: ^10
+          - php-version: 7.2
+            laravel-version: ^11
           - php-version: 7.3
             laravel-version: ^9
           - php-version: 7.3
             laravel-version: ^10
+          - php-version: 7.3
+            laravel-version: ^11
           - php-version: 7.4
             laravel-version: ^9
           - php-version: 7.4
             laravel-version: ^10
+          - php-version: 7.4
+            laravel-version: ^11
           - php-version: 8.0
             laravel-version: 5.6.*
           - php-version: 8.0
@@ -69,6 +79,8 @@ jobs:
             laravel-version: ^7
           - php-version: 8.0
             laravel-version: ^10
+          - php-version: 8.0
+            laravel-version: ^11
           - php-version: 8.1
             laravel-version: 5.6.*
           - php-version: 8.1
@@ -88,55 +100,46 @@ jobs:
           - php-version: 8.2
             laravel-version: ^6
           - php-version: 8.2
+            laravel-version: ^7
+          - php-version: 8.3
+            laravel-version: 5.6.*
+          - php-version: 8.3
+            laravel-version: 5.7.*
+          - php-version: 8.3
+            laravel-version: 5.8.*
+          - php-version: 8.3
+            laravel-version: ^6
+          - php-version: 8.3
             laravel-version: ^7
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: shivammathur/setup-php@v2
         with:
           extensions: ${{ env.REQUIRED_PHP_EXTENSIONS }}
           php-version: ${{ matrix.php-version }}
 
-      - uses: actions/cache@v1
-        with:
-          path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
-          restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
-
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - run: vendor/bin/phpunit --colors=always
+      - run: vendor/bin/phpunit
 
   coverage:
     runs-on: ubuntu-20.04
 
-    strategy:
-      matrix:
-        php-version:
-          - 8.1
-        laravel-version:
-          - ^9
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: shivammathur/setup-php@v2
         with:
           coverage: pcov
           extensions: ${{ env.REQUIRED_PHP_EXTENSIONS }}
-          php-version: ${{ matrix.php-version }}
+          php-version: 8.3
 
-      - uses: actions/cache@v1
-        with:
-          path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}
-          restore-keys: php-${{ matrix.php-version }}-composer-${{ matrix.laravel-version }}-
-
-      - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+      - uses: ramsey/composer-install@v3
 
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
