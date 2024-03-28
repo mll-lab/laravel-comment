@@ -96,6 +96,8 @@ jobs:
             laravel-version: ^6
           - php-version: 8.1
             laravel-version: ^7
+          - php-version: 8.1
+            laravel-version: ^11
           - php-version: 8.2
             laravel-version: 5.5.*
           - php-version: 8.2
@@ -131,7 +133,10 @@ jobs:
 
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - run: vendor/bin/phpunit --coverage-filter=src
+      - if: matrix.laravel-version == ^11
+        run: vendor/bin/phpunit --coverage-filter=src
+      - if: matrix.laravel-version != ^11
+        run: vendor/bin/phpunit
 
   coverage:
     runs-on: ubuntu-20.04
