@@ -1,4 +1,4 @@
-name: "Autoformat"
+name: Autoformat
 on:
   push:
 
@@ -6,13 +6,13 @@ jobs:
   composer-normalize:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
       - uses: shivammathur/setup-php@v2
 
-      - uses: ramsey/composer-install@v2
+      - uses: ramsey/composer-install@v3
 
       - run: composer normalize
 
@@ -23,7 +23,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
