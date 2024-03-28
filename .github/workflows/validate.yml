@@ -25,7 +25,7 @@ jobs:
           - 8.2
           - 8.3
         laravel-version:
-          - 5.5.*
+          # Purposefully omitting 5.5.*, it cannot be installed due to a conflict with orchestra/testbench
           - 5.6.*
           - 5.7.*
           - 5.8.*
@@ -69,8 +69,6 @@ jobs:
           - php-version: 7.4
             laravel-version: ^11
           - php-version: 8.0
-            laravel-version: 5.5.*
-          - php-version: 8.0
             laravel-version: 5.6.*
           - php-version: 8.0
             laravel-version: 5.7.*
@@ -85,8 +83,6 @@ jobs:
           - php-version: 8.0
             laravel-version: ^11
           - php-version: 8.1
-            laravel-version: 5.5.*
-          - php-version: 8.1
             laravel-version: 5.6.*
           - php-version: 8.1
             laravel-version: 5.7.*
@@ -99,8 +95,6 @@ jobs:
           - php-version: 8.1
             laravel-version: ^11
           - php-version: 8.2
-            laravel-version: 5.5.*
-          - php-version: 8.2
             laravel-version: 5.6.*
           - php-version: 8.2
             laravel-version: 5.7.*
@@ -110,8 +104,6 @@ jobs:
             laravel-version: ^6
           - php-version: 8.2
             laravel-version: ^7
-          - php-version: 8.3
-            laravel-version: 5.5.*
           - php-version: 8.3
             laravel-version: 5.6.*
           - php-version: 8.3
@@ -133,9 +125,9 @@ jobs:
 
       - run: composer require illuminate/support:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - if: matrix.laravel-version == ^11
+      - if: matrix.laravel-version == '^11'
         run: vendor/bin/phpunit --coverage-filter=src
-      - if: matrix.laravel-version != ^11
+      - if: matrix.laravel-version != '^11'
         run: vendor/bin/phpunit
 
   coverage:
