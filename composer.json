@@ -19,13 +19,13 @@
     "homepage": "https://github.com/mll-lab/laravel-comment",
     "require": {
         "php": "^7.1 || ^8",
-        "illuminate/contracts": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11",
-        "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11"
+        "illuminate/contracts": "~5.5 || ~5.6 || ~5.7 || ~5.8 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11",
+        "illuminate/support": "~5.5 || ~5.6 || ~5.7 || ~5.8 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2",
         "fakerphp/faker": "^1.8",
-        "orchestra/testbench": "~3.5.0 || ~3.6.0 || ~3.7.0 || ~3.8.0 || ~3.9.0 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9",
+        "orchestra/testbench": "~3.5 || ~3.6 || ~3.7 || ~3.8 || ~3.9 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9",
         "phpunit/phpunit": "^7.5 || ^8.4 || ^9 || ^10 || ^11"
     },
     "autoload": {
@@ -45,9 +45,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
             "providers": [
                 "\\Actuallymab\\LaravelComment\\LaravelCommentServiceProvider"
