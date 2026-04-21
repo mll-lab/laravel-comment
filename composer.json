@@ -18,15 +18,15 @@
     ],
     "homepage": "https://github.com/mll-lab/laravel-comment",
     "require": {
-        "php": "^7.1 || ^8",
-        "illuminate/contracts": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || ^13",
-        "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || ^13"
+        "php": "^8.2",
+        "illuminate/contracts": "^10 || ^11 || ^12 || ^13",
+        "illuminate/support": "^10 || ^11 || ^12 || ^13"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2",
         "fakerphp/faker": "^1.8",
-        "orchestra/testbench": "~3.5.0 || ~3.6.0 || ~3.7.0 || ~3.8.0 || ~3.9.0 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9 || ^10 || ^11",
-        "phpunit/phpunit": "^7.5 || ^8.4 || ^9 || ^10 || ^11 || ^12"
+        "orchestra/testbench": "^8 || ^9 || ^10 || ^11",
+        "phpunit/phpunit": "^10 || ^11 || ^12"
     },
     "autoload": {
         "psr-4": {
