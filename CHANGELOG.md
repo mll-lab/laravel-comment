@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 See [GitHub releases](https://github.com/mll-lab/laravel-comment/releases).
 
+## 1.6.0
+
+### Added
+
+- Support Laravel 13
+
 ## 1.5.0
 
 ### Added
